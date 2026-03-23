@@ -1,0 +1,53 @@
+:t afficher_avec_etoiles 
+
+afficher_avec_etoiles 3.14
+-- ***3.14***
+
+afficher_avec_etoiles "Hello"
+-- ***"hello"***
+
+afficher_avec_etoiles [1,2,3]
+-- ***[1,2,3]***
+
+
+:t combine
+combine (afficher_avec_etoiles 2) (afficher_avec_etoiles 3) 
+-- ***2***
+-- ***3***
+
+combine (afficher_avec_etoiles "Hello") (afficher_avec_etoiles "World")
+-- ***"Hello"***
+-- ***"World"***
+
+
+:t etoiles 
+etoiles
+-- ***
+
+:t retour_ligne
+retour_ligne
+--
+
+
+:t afficher_avec_etoiles2 
+afficher_avec_etoiles2 "Hello"
+-- ***
+-- "h"
+-- ***
+
+:t afficher_etoiles3
+afficher_etoiles3 "Hello"
+-- ***
+-- "Hello"
+-- ***
+
+
+:t echo
+echo
+-- [On tape la chaine : Hello]
+-- Hello
+
+:t echo2
+echo2
+-- [On tape la chaine : Hello]
+-- Hello
