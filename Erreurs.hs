@@ -10,3 +10,33 @@ cherche  list@(x:xs)  target | snd x == target  =  Just (fst x)
 
 
 
+distance :: String -> Maybe Double
+distance = cherche planetes
+
+
+suivante :: Double -> Maybe String
+suivante d | length list /= 0 = Just (snd (head list)) 
+           | otherwise        = Nothing 
+    where
+        list = filter (\(dist, planete) -> dist > d) planetes
+
+
+ua_vers_km :: Double -> Double
+ua_vers_km d = d*1.496*10**8
+
+
+
+distance_km_1 :: String -> Maybe Double
+distance_km_1 p = case distance p of
+    Nothing -> Nothing
+    Just d  -> Just (ua_vers_km d)
+
+
+fmap_Maybe :: (a -> b) -> Maybe a -> Maybe b
+fmap_Maybe _ Nothing  = Nothing
+fmap_Maybe fct (Just val) = Just (fct val)
+
+
+distance_km_2 :: String -> Maybe Double
+distance_km_2 = fmap_Maybe (ua_vers_km  distance) 
+-- Not working

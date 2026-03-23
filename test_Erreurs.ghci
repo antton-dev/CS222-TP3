@@ -7,3 +7,52 @@ cherche planetes "Mars"
 -- Just 1.52
 cherche planetes "Pluton"
 -- Nothing
+
+
+:t distance
+distance "Terre"
+-- Just 1.0
+distance "Mars"
+-- Just 1.52
+distance "Pluton"
+-- Nothing
+
+
+
+:t suivante 
+suivante 1.00
+-- Just "Mars"
+
+suivante 2.01
+-- Just "Jupiter"
+
+suivante 60
+-- Nothing
+
+suivante (-1)
+-- Just "Mercure"
+
+:t ua_vers_km
+ua_vers_km 1.00 
+-- 1.496e8
+ua_vers_km 2 
+-- 2.992e8
+ua_vers_km 5.20
+-- 7.7792e8
+ua_vers_km 0
+-- 0.0
+
+
+:d distance_km_1
+distance_km_1 "Pluton"
+-- Nothing
+distance_km_1 "Terre"
+-- Just 1.496e8
+distance_km_1 "Mars"
+-- Just 2.27392e8
+
+:t fmap_Maybe
+fmap_Maybe (+1) Nothing
+-- Nothing
+fmap_Maybe (+1) (Just 3)
+-- Just 4
