@@ -51,3 +51,18 @@ echo
 echo2
 -- [On tape la chaine : Hello]
 -- Hello
+
+:t wc
+wc "file.txt"
+-- 4 100 666 "file.txt"
+
+wc "empty.txt"
+-- 0 0 0 "empty.txt"
+
+:t sequenceur
+sequenceur [afficher_avec_etoiles "Hello", afficher_avec_etoiles "World", afficher_avec_etoiles "!"]
+-- ***"Hello"***
+-- ***"World"***
+-- ***"!"***
+seqenceur []
+-- 

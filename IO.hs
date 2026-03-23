@@ -1,5 +1,5 @@
 import Data.List
-
+import System.Environment
 
 afficher_avec_etoiles :: Show a => a -> IO ()
 afficher_avec_etoiles a =  putStrLn ("***" ++ show a ++ "***")
@@ -35,4 +35,20 @@ echo2 = getLine >>= putStrLn
 
 
 wc :: String -> IO ()
-wc file = 
+wc file = do
+    content <- readFile file
+    putStrLn (show (length (lines content)) ++ " " ++  show (length (words content)) ++ " " ++ show (length content) ++ " " ++ show file) 
+
+
+triviale :: IO ()
+triviale = return ()
+
+sequenceur :: [IO a] -> IO ()
+sequenceur [] = triviale
+sequenceur (x:xs) = combine x (sequenceur xs)
+
+
+main :: IO ()
+main = do
+    list <- getArgs
+    sequenceur (map wc list) 
