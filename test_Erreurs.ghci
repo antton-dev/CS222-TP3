@@ -1,0 +1,9 @@
+:t cherche
+cherche [] 1
+-- Nothing
+cherche planetes "Terre"
+-- Just 1.0
+cherche planetes "Mars"
+-- Just 1.52
+cherche planetes "Pluton"
+-- Nothing
