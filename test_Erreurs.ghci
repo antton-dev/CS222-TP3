@@ -56,3 +56,37 @@ fmap_Maybe (+1) Nothing
 -- Nothing
 fmap_Maybe (+1) (Just 3)
 -- Just 4
+
+:t distance_km_2
+distance_km_2 "Mars"
+-- Just 2.27392e8
+
+:t distance_km_3
+distance_km_3 "Mars"
+-- Just 2.27392e8
+
+:t planete_suivante
+planete_suivante "Mars"
+-- Just "Jupiter"
+planete_suivante "Neptune"
+-- Nothing
+
+:t planete_suivante_2
+planete_suivante_2 "Terre"
+-- Just "Mars"
+
+:t planete_suivante_3
+planete_suivante_3 "Terre"
+-- Just "Mars"
+
+:t distance_suivante_1
+distance_suivante_1 "Mars"
+-- Just 5.2
+
+:t distance_suivante_2
+distance_suivante_2 "Mars"
+-- Just 5.2
+
+:t distance_suivante_3
+distance_suivante_3 "Mars"
+-- Just 5.2

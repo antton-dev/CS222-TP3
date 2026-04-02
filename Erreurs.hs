@@ -38,5 +38,44 @@ fmap_Maybe fct (Just val) = Just (fct val)
 
 
 distance_km_2 :: String -> Maybe Double
-distance_km_2 = fmap_Maybe (ua_vers_km  distance) 
--- Not working
+distance_km_2 = fmap_Maybe ua_vers_km . distance
+
+distance_km_3 :: String -> Maybe Double
+distance_km_3 = fmap ua_vers_km . distance
+
+planete_suivante :: String -> Maybe String
+planete_suivante p = case distance p of
+    Nothing -> Nothing
+    Just d  -> case suivante d of
+        Nothing -> Nothing
+        Just s  -> Just s
+
+
+bind_Maybe :: Maybe a -> (a -> Maybe b) -> Maybe b
+bind_Maybe Nothing _ = Nothing
+bind_Maybe (Just a) f = f a
+
+
+planete_suivante_2 :: String -> Maybe String
+planete_suivante_2 p = bind_Maybe (distance p) suivante
+
+planete_suivante_3 :: String -> Maybe String
+planete_suivante_3 p = do
+    d <- distance p
+    suivante d
+
+distance_suivante_1 :: String -> Maybe Double
+distance_suivante_1 p = case distance p of
+    Nothing -> Nothing
+    Just d  -> case suivante d of
+        Nothing -> Nothing
+        Just s  -> distance s
+
+distance_suivante_2 :: String -> Maybe Double
+distance_suivante_2 p = do
+    d <- distance p
+    suiv <- suivante d
+    distance suiv
+
+distance_suivante_3 :: String -> Maybe Double
+distance_suivante_3 p = distance p >>= suivante >>= distance
